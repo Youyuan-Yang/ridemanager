@@ -1,0 +1,29 @@
+i2c_device: /dev/i2c-4
+address: 0x68
+sample_rate: 100
+database_rate: 10
+madgwick_beta: 0.1
+lowpass_alpha: 0.1
+calibration_enabled: true
+calibration_samples: 200
+calibration_max_gyro_stddev: 0.3
+calibration_max_accel_stddev: 0.05
+
+# Vehicle mounting transform. Current board is mounted upside down:
+# vehicle_x = sensor_x, vehicle_y = -sensor_y, vehicle_z = -sensor_z.
+mount_x_sign: 1
+mount_y_sign: -1
+mount_z_sign: -1
+
+# Flat static acceleration was about 1.478g, so 1 / 1.478 ~= 0.6766.
+# Set this back to 1.0 if the raw accelerometer norm is fixed near 1g.
+accel_scale_correction: 0.6766
+
+enable_database: true
+database_conninfo: "host=localhost port=5432 dbname=ridemanager user=ridemanager password=ridemanager connect_timeout=3"
+device_id: "00000000-0000-0000-0000-000000000001"
+# Empty means imu_service will create one safety_decisions row per DB batch.
+# Fill this only when another RideManager module provides an existing decision UUID.
+safety_decision_id: ""
+sensor_name: GYRO
+queue_capacity: 512

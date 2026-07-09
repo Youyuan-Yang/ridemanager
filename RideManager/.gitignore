@@ -1,0 +1,14 @@
+build/
+bin/
+.DS_Store
+*.log
+*.tmp
+node_modules/
+dist/
+coverage/
+obj/
+*.user
+*.suo
+*.swp
+*.pt
+yolopv2.onnx
